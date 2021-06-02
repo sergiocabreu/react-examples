@@ -2,15 +2,12 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 
 function DadosUsuario({ aoEnviar }) {
-  console.log("te");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log("testes");
-        console.log(email, senha);
         aoEnviar({ email, senha });
       }}
     >

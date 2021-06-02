@@ -18,7 +18,6 @@ class App extends Component {
 }
 
 function aoEnviarForm(dados) {
-  console.log("passou");
   console.log(dados);
 }
 
