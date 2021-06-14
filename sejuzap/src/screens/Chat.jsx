@@ -1,7 +1,13 @@
+import useMessages from "../hooks/useMessages";
+import MessegeSender from "../components/MessegeSender";
+import Messages from "../components/Messages";
 function Chat() {
+  const [messages, loading, error] = useMessages();
+
   return (
-    <div className="Chat">
+    <div>
       <Messages messages={messages} />
+      <MessegeSender />
     </div>
   );
 }
