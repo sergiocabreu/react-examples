@@ -1,6 +1,8 @@
 import { useState } from "react";
 import MessagingService from "../services/messaging";
 
+import "./MessageSender.scss";
+
 function MessegeSender() {
   const [message, setMessage] = useState("");
 
@@ -9,7 +11,7 @@ function MessegeSender() {
     setMessage("");
   }
   return (
-    <div>
+    <div className={"MessageSender"}>
       <input
         type="text"
         value={message}

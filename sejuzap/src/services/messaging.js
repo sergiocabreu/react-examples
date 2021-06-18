@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db, firebase } from "../firebase";
 
 const MessagingService = {
   async getMessagesv2() {
@@ -27,8 +27,12 @@ const MessagingService = {
   },
   sendMessage(message) {
     db.collection("messages").add({
-      userId: "sergio",
+      user: {
+        userId: "ada",
+        name: "Ada AK",
+      },
       message: message,
+      created: firebase.firestore.FieldValue.serverTimestamp(),
     });
   },
 };

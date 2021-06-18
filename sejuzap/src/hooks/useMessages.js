@@ -5,7 +5,7 @@ import { db } from "../firebase";
 function useMessages() {
   const [messages, setMessages] = useState([]);
   const [messagesCollection, loading, error] = useCollection(
-    db.collection("messages")
+    db.collection("messages").orderBy("created", "asc")
   );
 
   useEffect(() => {
