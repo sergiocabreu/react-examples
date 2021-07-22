@@ -1,77 +1,56 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+
 
 class Formulario2 extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            nome: '',
-            email: '',
-            senha: '',
-            error: ''
+            email : "",
+            senha: "",
+            sexo: "masculino"
         }
 
-        this.cadastrar = this.cadastrar.bind(this);
+        this.trocaEmail = this.trocaEmail.bind(this);
+        this.trocaSenha = this.trocaSenha.bind(this);
     }
 
-    cadastrar(event) {
-        event.preventDefault();
+    trocaEmail(event) {
+        const valorDigitado = event.target.value;
+        this.setState({email: valorDigitado});
+    }
 
-        const {nome, email, senha} = this.state;
-
-        if (nome !== '' && email !== '' && senha !== '') {
-            console.log(`${nome}, ${email}, ${senha}`);
-            this.setState({error: ''});
-        } else {
-            this.setState({error: 'Preencha todos os campos.'});
-        }
+    trocaSenha(event) {
+        const valorDigitado = event.target.value;
+        this.setState({senha: valorDigitado});
     }
 
     render() {
         return (
-        <form onSubmit={this.cadastrar}>
+            <div>
+                <h3>Login</h3>
 
-            {this.state.error && <p>{this.state.error}</p> }
+                <label>Email</label>
+                <input type="text" name="email" value={this.state.email} onChange={this.trocaEmail}/><br/>
 
-            <label>Nome</label>
-            <input 
-                type="text" 
-                name="nome" 
-                value={this.state.nome} 
-                onChange={(e) => {
-                    this.setState({nome: e.target.value})
-                }}
-            />
-            <br/>
+                <label>Senha</label>
+                <input type="password" name="senha" value={this.state.senha} onChange={this.trocaSenha}/><br/>
 
-            <label>email</label>
-            <input 
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={(e) => {
-                    this.setState({ email: e.target.value})
-                }}
-            />
-            <br/>
+                <select 
+                    name="sexo" 
+                    value={this.state.sexo} 
+                    onChange={ (e) => { this.setState({sexo: e.target.value}) } }>
+                    <option value="masculino">Masculino</option>
+                    <option value="femino">Feminino</option>
+                </select>
 
-            <label>Senha</label>
-            <input 
-                type="password"
-                name="senha"
-                value={this.state.senha}
-                onChange={(e) => { 
-                    this.setState({ senha: e.target.value}) 
-                }}
-            />
-            <br/>
-
-            <button>Cadastrar</button>
-
-        </form>
-        )
+                <h3>{this.state.email}</h3>
+                <h3>{this.state.senha}</h3>
+                <h3>{this.state.sexo}</h3>
+            </div>
+        );
     }
 }
+
 
 export default Formulario2;
